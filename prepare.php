@@ -5,7 +5,17 @@ $username = "root";
 $password = "";
 
 $conn = new PDO($db_name, $username, $password);
-$sql = $conn->query("SELECT * FROM user ");
+$name = "Rahul";
+$city= "Dhaka"; 
+$dob = 2020;
+
+// $sql = $conn->prepare("SELECT * FROM user WHERE City = :City AND  ID > :ID");
+ $sql = $conn->prepare("INSERT INTO user (Name, City, DOB) VALUES (:Name, :City, :DOB)");
+
+// $sql->bindValue(':City', $city, PDO::PARAM_STR);
+// $sql->bindValue(':ID', $id, PDO::PARAM_INT);
+
+$sql -> execute(array(':Name' => $name, ':City' => $city, ':DOB' => $dob ));
 
 $result = $sql->fetchAll(PDO::FETCH_NUM);
 //    echo "<pre>";
@@ -16,6 +26,11 @@ if(count($result)){
     foreach($result as $row){
         echo "{$row[0]} - {$row[1]} - {$row[2]} - {$row[3]} <br>";
     }
+    
+}
+else{
+    
+    echo "No Data Found"; 
 }
    
 // while($row = $sql->fetch(PDO::FETCH_OBJ)){
@@ -27,7 +42,3 @@ if(count($result)){
 //     // echo "</pre>";
     
 // }
-
-
-
-?>
