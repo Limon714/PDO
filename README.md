@@ -1,29 +1,30 @@
 # PDO CRUD APPLICATION
 
-CRUD operations descriptions and examples
-CREATE – Being a forum, it needs to let our users create new topics. When a user opens the topic creation form, fills it and clicks on the "Create topic" button, it will trigger the forum's CREATE function that will create a new "Topic" record with the "title", "content", "tags", etc values in the forum's database
+###CRUD operations descriptions and examples
+CREATE – Being a forum, it needs to let our users create new topics. 
+When a user opens the topic creation form, fills it and clicks on the "Create topic" button, it will trigger the forum's CREATE function that will create a new "Topic" record with the "title", "content", "tags", etc values in the forum's database
 
-CRUD CREATE
+## CRUD CREATE
 READ – Once the post is created, anyone will be able to read it when browsing on the forum and clicking on it, or directly accessing its URL. Doing so will call the forum's READ function, that will retrieve the topic including its attributes (title, content, tags, etc) from the database. The READ function doesn't modify any information from this topic.
 
 
-UPDATE – After a user has created a topic, our forum allows them to edit it. Useful if they made a mistake or forgot something. To do so, users can simply click the edit button and modify the values of the different attributes. After they click "Save Edit", the forum's UPDATE function will be called, and change those values accordingly in the database.
+## UPDATE – After a user has created a topic, our forum allows them to edit it. Useful if they made a mistake or forgot something. To do so, users can simply click the edit button and modify the values of the different attributes. After they click "Save Edit", the forum's UPDATE function will be called, and change those values accordingly in the database.
 
-CRUD UPDATE
+# CRUD UPDATE
 CRUD UPDATE form
 DELETE – If for any reason, the user wants to delete their topic, they can click the "delete topic" button,. The forum's DELETE function will be called, and will delete the topic record and its attributes from the database.
 
-CRUD DELETE
-This is a simple explanation of CRUD operations on a single type of records. Even basic applications will involve CRUD operations on various types of records, with different users being authorised to perform different operations on different types of records. In our forums examples, a user can CREATE a topic, UPDATE their account, READ comments in a topic, and DELETE a bookmark, while admins can UPDATE users rights or CREATE new forum sections.
+# CRUD DELETE
+```This is a simple explanation of CRUD operations on a single type of records. Even basic applications will involve CRUD operations on various types of records, with different users being authorised to perform different operations on different types of records. In our forums examples, a user can CREATE a topic, UPDATE their account, READ comments in a topic, and DELETE a bookmark, while admins can UPDATE users rights or CREATE new forum sections. ```
 
-CRUD operations, REST and SQL
-Now we know what are CRUD operations at a high level. We saw that essentially, CRUD operations are triggered by users' (or automated) actions, and alter or read the database. Usually, in web applications, those CRUD operations will be triggered by users' actions generating calls to a REST API, and will alter or read the database via SQL queries.
+### CRUD operations, REST and SQL
+``` Now we know what are CRUD operations at a high level. We saw that essentially, CRUD operations are triggered by users' (or automated) actions, and alter or read the database. Usually, in web applications, those CRUD operations will be triggered by users' actions generating calls to a REST API, and will alter or read the database via SQL queries.  ```
 
 The table below describes how CRUD operations map to HTTP methods from REST APIs called to trigger the operations, and to SQL queries performed to alter or read the database:
 
-HTTP Method
+# HTTP Method
 
-CRUD operation
+``` CRUD operation
 
 SQL query
 
@@ -47,12 +48,10 @@ UPDATE
 
 DELETE
 
-DELETE
+```
 
-DELETE
-
-What is a CRUD app?
-A you might have noticed, even for the most basic use case, those CRUD operations aren't enough to achieve any meaningful results by themselves, they interact with other elements. All together, those elements make a CRUD app.
+# What is a CRUD app?
+``` A you might have noticed, even for the most basic use case, those CRUD operations aren't enough to achieve any meaningful results by themselves, they interact with other elements. All together, those elements make a CRUD app.
 
 Front-end
 The front-end, or User Interface, is what enable users to interact with the application, call the REST API to trigger the CRUD operations and ultimately interact with the database.
@@ -61,12 +60,12 @@ Back-end
 The back-end is what will translate the REST API calls into SQL queries to perform CRUD operations on your database.
 
 Database
-The database is where your data, and where the CRUD operations are ultimately performed via SQL queries.
+The database is where your data, and where the CRUD operations are ultimately performed via SQL queries.  ```
 
-Role-Based Access Control Activity logs, ...
-In addition to the components listed above, that are the essential components of a CRUD app, additional capabilities are required to build a robust app. Indeed, you might want to restrict which users can perform which operations (for instance deleting the entire database), and log every operations performed for debugging or compliance purposes.
+# Role-Based Access Control Activity logs, ...
+``` In addition to the components listed above, that are the essential components of a CRUD app, additional capabilities are required to build a robust app. Indeed, you might want to restrict which users can perform which operations (for instance deleting the entire database), and log every operations performed for debugging or compliance purposes.  ```
 
-Hosting
+# Hosting
 All the components above have to be hosted somewhere to always be accessible for your and your users.
 
 Now, let's see different options to build a CRUD app.
@@ -114,23 +113,25 @@ In this blog, we'll see how to build a CRUD app with Forest Admin. We'll assume 
 Install your CRUD app builder
 The first step is to install the tool that will help your generate your CRUD app. Using our example Forest Admin with a PostgreSQL database, it only takes a few steps:
 
-Install Forest Admin CLI
-
+# Install Forest Admin CLI
+```
 $ npm install -g lumber-cli@latest -s
-Login to Forest CLI
 
-$ forest login
-Generate the backend application
+```
+# Login to Forest CLI
 
-$ forest projects:create "CRUDapp" --databaseConnectionURL "postgres://root:password@localhost:5432/myDatabase" --databaseSchema "public" --applicationHost "localhost" --applicationPort "3310"  
-$ cd "CRUDapp" 
-$ npm install -s
-Run your backend application
+``` $ forest login ```
+# Generate the backend application
 
-$ npm start
+``` $ forest projects:create "CRUDapp" --databaseConnectionURL "postgres://root:password@localhost:5432/myDatabase" --databaseSchema "public" --applicationHost "localhost" --applicationPort "3310"  ```
+``` $ cd "CRUDapp" 
+$ npm install -s  ```
+# Run your backend application
+
+``` $ npm start
 Build your CRUD app
 The catch is that with Forest Admin, you get an up and running CRUD app right after installing it on top of your database. It automatically generates visualisations of your tables, CRUD operations and more, as well as the associated front-end.
 
 CRUD app
-You also benefit from built-in Role-Based Access Control, Activity logs and more so you can focus on coding your own business logic, adding custom actions to your new app and customising it.
+You also benefit from built-in Role-Based Access Control, Activity logs and more so you can focus on coding your own business logic, adding custom actions to your new app and customising it. ```
 
